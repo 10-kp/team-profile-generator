@@ -1,7 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require ("fs");
-const jest = require("jest");
-const util = require ("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 //import modules
@@ -30,12 +28,12 @@ const promptUser = () => {
     {
     type: "text",
     name: "id",
-    message: "Please provide employee's ID number:",
+    message: "Provide employee's ID number:",
     },
     {
     type: "text",
     name: "email",
-    message: "Please provide employee's email:",
+    message: "Provide employee's email:",
     },
 ]);
 };
