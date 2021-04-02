@@ -34,6 +34,6 @@ test("engineer's role", () => {
 
 test("engineer's github", () => {
     const engineer = new Engineer ("Casey Jones", "2222", "casey@jones.com", "cj1");
-    let github = engineer.getGithub ()
-    expect(github).toBe ("cj1");
+    let github = engineer.getGithub()
+    expect(github).toBe("Github: cj1");
 });

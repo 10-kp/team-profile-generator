@@ -26,6 +26,6 @@ test("manager's email", () => {
 });    
 test("manager's office number", () => {
     const manager = new Manager ("Micheal Scott", "1111", "Michael@Scott.com", "012-446-6789");
-    let email = manager.getOfficeNumber()
+    let officeNumber = manager.getOfficeNumber()
     expect(officeNumber).toBe ("012-446-6789");
 });    
