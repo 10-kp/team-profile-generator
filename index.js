@@ -1,9 +1,6 @@
 //promt user for team members
 const inquirer = require("inquirer");
 
-//write file to html
-// const generateHtml = require("./__tests__/dist/index.html");
-
 const fs = require ("fs");
 const util = require ("util");
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -16,6 +13,8 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 //HTML
+const generatePage = require('./src/site-template');
+const writeFile = require('./src/site-generate')
 
 //Empty array
 let manager = {};
@@ -109,7 +108,7 @@ const promptUser = () => {
 // generateHtml(allEmployees)
 
 console.log(`
-Welcome to the Team Profile Generator!
+Welcome to the Team Profile Generator! Create your team:
 `);
 
 // promptUser()
@@ -220,8 +219,8 @@ const init = () => {
                 </div>
             </div>
             </div>
-                    </div>
-                </main>
+            </div>
+            </main>
             </body>
             </html>`
 
@@ -231,24 +230,3 @@ const init = () => {
     };
     
 init();
-
-
-// const writePage = (htmlContent) => {
-//     fs.writeFile("", htmlContent, err => {
-//         if (err) {
-//             throw err
-//         };
-//         console.log('Page created successfully!');
-//     });
-// };
-
-// function createHTML() {
-// 	fs.readFile("./html/main", "utf8", (err, data) => {
-// 		const newData = data.replace("{{html}}", html);
-
-// 		fs.writeFile("./output/index.html", newData, "utf8", err => {
-// 			if (err) return console.log(err);
-// 		});
-// 		console.log(".html created");
-// 	});
-// };
