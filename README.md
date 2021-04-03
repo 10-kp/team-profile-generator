@@ -1,6 +1,7 @@
 # team-profile-generator
 
-[![](https://img.shields.io/badge/javascript-100%25-blue)]()
+[![](https://img.shields.io/badge/javascript-95%25-blue)]()
+[![](https://img.shields.io/badge/html-5%25-orange)]()
 
 Git Hub Link: https://github.com/10-kp/team-profile-generator
 
@@ -18,9 +19,10 @@ License: MIT
 
 ## Installation
 
-To install, download the repo and run 'node index' in the command line.
+Download the repository and run 'node index' in the command line.
 
 ## Usage
+
 TESTING JS
 A command-line application that tests a suit of units [Jest package](https://www.npmjs.com/package/jest). 
 

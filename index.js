@@ -26,71 +26,95 @@ let allEmployees = [manager, engineer, intern];
 const promptUser = () => {
     return inquirer.prompt([
     {
-    type: "text",
-    name: "name",
-    message: "What is the employee's name?",
+    type: "input",
+    name: "manager_name",
+    message: "What is the Manager's name?",
+    },
+    {
+    type: "input",
+    name: "manager_id",
+    message: ({manager_name}) => `What is ${manager_name}'s id?`,
     },
 
     {
-    type: "list",
-    name: "role",
-    message: "What is the employee's role?",
-    choices: () => {
-            if (allEmployees.some(employee => employee.role === 'Manager')) {
-                return ['Engineer', 'Intern']    
-            } else {
-                return ['Manager', 'Engineer', 'Intern']
-            }
-        }, 
-    },
-    {
-    type: "text",
-    name: "id",
-    message: ({name}) => `What is ${name}'s id?`,
-    },
-
-    {
-    type: "text",
-    name: "email",
-    message: ({name}) => `What is ${name}'s email?`,
+    type: "input",
+    name: "manager_email",
+    message: ({manager_name}) => `What is ${manager_name}'s email?`,
     },
 
     {
     type: 'input',
     name: 'officeNumber',
-    message: ({name}) => `What is ${name}'s office number?`,
-    when: ({ role }) => {
-            if (role === 'Manager') {
-                return true;
-            } else {
-                return false;
-            }
-        },
+    message: ({manager_name}) => `What is ${manager_name}'s office number?`,
+    },
+
+    {
+    type: "input",
+    name: "engineer_one_name",
+    message: "What is the Engineer's name?",
+    },
+    {
+    type: "input",
+    name: "engineer_one_id",
+    message: ({engineer_one_name}) => `What is ${engineer_one_name}'s id?`,
+    },
+
+    {
+    type: "input",
+    name: "engineer_one_email",
+    message: ({engineer_one_name}) => `What is ${engineer_one_name}'s email?`,
+    },
+
+    {
+    type: 'input',
+    name: 'engineer_one_github',
+    message: ({engineer_one_name}) => `What is ${engineer_one_name}'s GitHub userame?`,
+    },
+
+    {
+    type: "input",
+    name: "engineer_two_name",
+    message: "What is the second Engineer's name?",
+    },
+    {
+    type: "input",
+    name: "engineer_two_id",
+    message: ({engineer_two_name}) => `What is ${engineer_two_name}'s id?`,
+    },
+
+    {
+    type: "input",
+    name: "engineer_two_email",
+    message: ({engineer_two_name}) => `What is ${engineer_two_name}'s email?`,
+    },
+
+    {
+    type: 'input',
+    name: 'engineer_two_github',
+    message: ({engineer_two_name}) => `What is ${engineer_two_name}'s GitHub userame?`,
+    },
+
+    {   
+    type: "input",
+    name: "intern_name",
+    message: "What is the Intern's name?",
+    },
+    {
+    type: "input",
+    name: "intern_id",
+    message: ({intern_name}) => `What is ${intern_name}'s id?`,
+    },
+
+    {
+    type: "input",
+    name: "intern_email",
+    message: ({intern_name}) => `What is ${intern_name}'s email?`,
     },
     {
     type: 'input',
-    name: 'github',
-    message: ({name}) => `What is ${name}'s GitHub userame?`,
-    when: ({ role }) => {
-            if (role === 'Engineer') {
-                return true;
-            } else {
-                return false;
-            }
-        },
+    name: 'school',
+    message: ({intern_name}) => `What is ${intern_name}'s school?`,
     },
-    {
-        type: 'input',
-        name: 'school',
-        message: ({name}) => `What is ${name}'s school?`,
-        when: ({ role }) => {
-                if (role === 'Intern') {
-                    return true;
-                } else {
-                    return false;
-                }
-            },
-        },
 ]);
 };
 
@@ -128,7 +152,7 @@ const init = () => {
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>My Team</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha51two-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
             </head>
             <body>
@@ -149,14 +173,14 @@ const init = () => {
                         <div class="media-left">
                         </div>
                         <div class="media-content">
-                            <p class="title is-4">${data.name}</p>
-                            <p class="subtitle is-6">${data.role}</p>
+                            <p class="title is-4">${data.manager_name}</p>
+                            <p class="subtitle is-6">Manager</p>
                         </div>
                     </div>
             
                     <div class="content">
-                        <p><span class="has-text-weight-bold">ID:</span>${data.id}<br />
-                        <span class="has-text-weight-bold">Email:</span><a href="${data.email}" class="has-text-primary">${data.email}</a><br/>
+                        <p><span class="has-text-weight-bold">ID:</span>${data.manager_id}<br />
+                        <span class="has-text-weight-bold">Email:</span><a href="mailto:${data.manager_email}" class="has-text-primary">${data.manager_email}</a><br/>
                         <span class="has-text-weight-bold">Office Number:</span>${data.officeNumber}</p>
                     </div>
                 </div>
@@ -168,15 +192,15 @@ const init = () => {
                     <div class="media">
                         <div class="media-left"></div>
                         <div class="media-content">
-                            <p class="title is-4">${data.name}</p>
-                            <p class="subtitle is-6">${data.role}</p>
+                            <p class="title is-4">${data.engineer_one_name}</p>
+                            <p class="subtitle is-6">Engineer</p>
                         </div>
                     </div>
             
                     <div class="content">
-                        <p><span class="has-text-weight-bold">ID:</span>${data.id}<br />
-                        <span class="has-text-weight-bold">Email:</span> <a href="${data.email}" class="has-text-primary">${data.email}</a><br />
-                        <span class="has-text-weight-bold">GitHub:</span> <a href="${data.github}" target="_blank" class="has-text-primary">${data.github}</a></p>
+                        <p><span class="has-text-weight-bold">ID:</span>${data.engineer_one_id}<br />
+                        <span class="has-text-weight-bold">Email:</span> <a href="mailto:${data.engineer_one_email}" class="has-text-primary">${data.engineer_one_email}</a><br />
+                        <span class="has-text-weight-bold">GitHub:</span> <a href="https://github.com/${data.engineer_one_github}" target="_blank" class="has-text-primary">${data.engineer_one_github}</a></p>
                     </div>
                 </div>
             </div>
@@ -187,15 +211,15 @@ const init = () => {
                     <div class="media">
                         <div class="media-left"></div>
                         <div class="media-content">
-                            <p class="title is-4">${data.name}</p>
-                            <p class="subtitle is-6">${data.role}</p>
+                            <p class="title is-4">${data.engineer_two_name}</p>
+                            <p class="subtitle is-6">Eng</p>
                         </div>
                     </div>
             
                     <div class="content">
-                        <p><span class="has-text-weight-bold">ID:</span> ${data.id}<br />
-                        <span class="has-text-weight-bold">Email:</span> <a href="${data.email}" class="has-text-primary">${data.email}</a><br />
-                        <span class="has-text-weight-bold">GitHub:</span> <a href="${data.github}" target="_blank" class="has-text-primary">${data.github}</a></p>
+                        <p><span class="has-text-weight-bold">ID:</span> ${data.engineer_two_id}<br />
+                        <span class="has-text-weight-bold">Email:</span> <a href="mailto:${data.engineer_two_email}" class="has-text-primary">${data.engineer_two_email}</a><br />
+                        <span class="has-text-weight-bold">GitHub:</span> <a href="https://github.com/${data.engineer_two_github}" target="_blank" class="has-text-primary">${data.engineer_two_github}</a></p>
                     </div>
                 </div>
             </div>
@@ -206,14 +230,14 @@ const init = () => {
                     <div class="media">
                         <div class="media-left"></div>
                         <div class="media-content">
-                            <p class="title is-4">${data.name}</p>
-                            <p class="subtitle is-6">${data.role}</p>
+                            <p class="title is-4">${data.intern_name}</p>
+                            <p class="subtitle is-6">Intern</p>
                         </div>
                     </div>
             
                     <div class="content">
-                        <p><span class="has-text-weight-bold">ID:</span>${data.id}<br />
-                        <span class="has-text-weight-bold">Email:</span> <a href="${data.email}" class="has-text-primary">${data.email}</a><br />
+                        <p><span class="has-text-weight-bold">ID:</span>${data.intern_id}<br />
+                        <span class="has-text-weight-bold">Email:</span> <a href="mailto:${data.intern_email}" class="has-text-primary">${data.intern_email}</a><br />
                         <span class="has-text-weight-bold">School:</span> ${data.school}</p>
                     </div>
                 </div>
@@ -224,9 +248,11 @@ const init = () => {
             </body>
             </html>`
 
-        writeFileAsync('index.html', template)})
+        writeFileAsync('index.html', template)
         .then(() => console.log('Successfully createad HTML file.'))
         .catch((err) => console.error(err));
+        });
     };
+
     
 init();

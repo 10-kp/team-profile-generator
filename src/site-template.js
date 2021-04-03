@@ -11,14 +11,14 @@ const generateCards = teamData => {
                         <div class="media">
                             <div class="media-left"></div>
                             <div class="media-content">
-                                <p class="title is-4">${data.name}</p>
-                                <p class="subtitle is-6">${data.role}</p>
+                                <p class="title is-4">${data.manager_name}</p>
+                                <p class="subtitle is-6">Manager</p>
                             </div>
                         </div>
                 
                         <div class="content">
-                            <p><span class="has-text-weight-bold">ID:</span>${data.id}<br />
-                            <span class="has-text-weight-bold">Email:</span><a href="${data.email}" class="has-text-primary">${data.email}</a><br/>
+                            <p><span class="has-text-weight-bold">ID:</span>${data.manager_id}<br />
+                            <span class="has-text-weight-bold">Email:</span><a href="${data.manager_email}" class="has-text-primary">${data.email}</a><br/>
                             <span class="has-text-weight-bold">Office Number:</span>${data.officeNumber}</p>
                         </div>
                     </div>
