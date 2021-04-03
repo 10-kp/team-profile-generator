@@ -212,7 +212,7 @@ const init = () => {
                         <div class="media-left"></div>
                         <div class="media-content">
                             <p class="title is-4">${data.engineer_two_name}</p>
-                            <p class="subtitle is-6">Eng</p>
+                            <p class="subtitle is-6">Engineer</p>
                         </div>
                     </div>
             
@@ -248,7 +248,7 @@ const init = () => {
             </body>
             </html>`
 
-        writeFileAsync('index.html', template)
+        writeFileAsync('./dist/index.html', template)
         .then(() => console.log('Successfully createad HTML file.'))
         .catch((err) => console.error(err));
         });
